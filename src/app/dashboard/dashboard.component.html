@@ -1,0 +1,67 @@
+<h2 class="text-center"> Welcome  {{user}}</h2>       <!-- login name display  using string interpolation  -->
+<div class="text-center fw-bold fs-5 mt-2">
+<a routerLink="/transaction">View Transaction Details</a>
+</div>
+
+<div class="row">
+    <div class="col-1"></div>
+<div class="col-4  mt-3 mb-3">
+    
+    <form action="" class=" dash mt-5 border border-light border-5 shadow-lg rounded  p-5 wrapper ">
+
+        <div class="text-center">
+            <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
+        </div>
+        <div class="text-center fw-bold mt-3 ">Deposit</div>
+
+
+
+        <input [(ngModel)]="acno" name="acno" type="text" id="dash_acno" placeholder="Account Number"
+            class="form-control rounded-pill shadow mt-3">
+        <input [(ngModel)]="pswd" name="pswd" type="password" id="dash_pswd" placeholder="password"
+            class="form-control rounded-pill shadow mt-3">
+        <input [(ngModel)]="amount" name="amount" type="text" id="dash_amount" placeholder="Amount for Deposit"
+            class="form-control rounded-pill shadow mt-4">
+
+        <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="deposit()">Deposit
+            </button>
+        </div>
+        <!--         
+                      <div class="d-grid gap-2 text-center mt-3">
+                        <a routerLink="" style="text-decoration: none;" >Sign in</a>
+                          </div> -->
+    </form>
+</div>
+
+
+<div class="col-2"></div>
+
+    <div class="col-4  mt-3 mb-3 ">
+        <form action="" class=" dash mt-5 border border-light border-5 shadow-lg rounded p-5 wrapper">
+            <div class="text-center">
+                <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
+            </div>
+            <div class="text-center fw-bold mt-3 ">Withdraw</div>
+
+
+
+            <input [(ngModel)]="acno1" name="acno"  type="text" id="with_acno" placeholder="Account Number"
+                class="form-control rounded-pill shadow mt-3">
+            <input [(ngModel)]="pswd1" name="pswd" type="password" id="with_pswd" placeholder="password"
+                class="form-control rounded-pill shadow mt-3">
+            <input [(ngModel)]="amount1" name="amount" type="text" id="with_amount" placeholder="amount to withdraw"
+                class="form-control rounded-pill shadow mt-4">
+
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="withdraw()">withdraw
+                </button>
+            </div>
+           
+        </form>
+    </div>
+<div class="col-1"></div>
+</div>
+
+
+

@@ -1,0 +1,21 @@
+table,thead,tbody,tr,th,td{
+    border: 2px solid black;
+    padding : 20px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(219, 222, 226);
+
+
+}
+
+#a1{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: blue;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 20px;
+}

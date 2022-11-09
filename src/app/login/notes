@@ -17,4 +17,80 @@ Data Binding   =   Sharing data inside a component
                 a) Event binding -     (event name) = "function name()"
                                                                         .....event is an action.....
                 b)Event binding  using  $(event) -      (event name) = "functionname($event)"
+                c)EVent handling using template referencing variable    -   #variable name    
 
+
+
+        2    Two way binding
+
+
+       => Angular routing
+        = to set path for a component
+                syntax :
+
+                {
+                        path:value, component:class name
+                }
+
+
+use <router-outlet></router-outlet> inside root component
+
+
+Dependency  Injection
+----------------------
+To share data between dependent classes
+
+
+
+Angular services
+-----------------
+ng g s service name
+here,    angular -> bankapp -> src -> app -> services (new folder) ...
+ then in terminal..,   ng g s services
+ 
+
+Angular Directives
+-------------------
+To manipulate DOM elements
+
+        a)component directives
+
+        b)structural directives         = to change the structure of page likes as table
+                1)ngFor  
+
+
+
+Angular forms
+---------------
+
+        a)Template Driven Forms (first design html) - html page designing
+        
+        b)model Driven forms (first ts file -> html design)  -  Adv validation methods
+                1)Reactive form
+                        form group , array , control
+                        - we can directly add validation methods
+                                 ->Add validation
+                                 -> import reactive form modules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                

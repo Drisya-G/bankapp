@@ -1,36 +1,68 @@
 <div class="row">
     <div class="col-4"></div>
-    <div class="col-4  mt-5">
-        <form action="" class="mt-5 border border-light shadow-lg rounded bg-light p-5 ">
+    <div class="col-4 reg rounded mt-3">
+        <form action="" class="log mt-3 mb-3 border border-light shadow-lg rounded  p-5 ">
             <div class="text-center">
                 <img src="../../assets/images/bank.jpeg" class="img w-25 h-25 rounded">
             </div>
             <div class="text-center fw-bold mt-3 ">My Bank</div>
-            
+
 
             <h6 class="text-center">{{aim}}</h6>
-                        <!-- in .ts file.... string interpolation -->
+            <!-- in .ts file.... string interpolation -->
 
-                   
-                <!-- Event binding  using  $(event) -->
-                <!-- event      fnname    parameter                             property binding -->
-            <input  (change)="acnoChange($event)" type="text" id="login_acno"  [placeholder]="account"
-                class="form-control rounded-pill shadow mt-4"> 
 
-            <input   (change)="pswdChange($event)" type="password" id="login_pswd" placeholder="password" class="form-control rounded-pill shadow mt-3">
+            <!-- Event binding  using  $(event) -->
+            <!-- event      fnname    parameter                             property binding -->
+            <!-- <input  (change)="acnoChange($event)" type="text" id="login_acno"  [placeholder]="account"
+                class="form-control rounded-pill shadow mt-4">  -->
+
+
+
+            <!-- <input #acno type="text" id="login_acno"  [placeholder]="account"
+                class="form-control rounded-pill shadow mt-4">  -->
+            <!-- EVent handling using template referencing variable -->
+
+
+            <div class="rounded-pill shadow ps-1 pe-1   reg">
+
+            <input [(ngModel)]="acno" [ngModelOptions]="{standalone: true}" type="text" name="acno" id="login_acno" placeholder="enter your acno"
+                class="form-control rounded-pill shadow mt-4">
+                </div>
+
+            <div class="rounded-pill shadow ps-1 pe-1   reg">
+
+            <input [(ngModel)]="pswd" [ngModelOptions]="{standalone: true}" type="password" name="pswd" id="login_pswd" placeholder="password"
+                class="form-control rounded-pill shadow mt-3"  >
+            <!-- 2 way binding -->
+
+                </div>
+
+            <!-- <input   (change)="pswdChange($event)" type="password" id="login_pswd" placeholder="password" class="form-control rounded-pill shadow mt-3"> -->
+
+            <!-- <input   #pswd type="password" id="login_pswd" placeholder="password" class="form-control rounded-pill shadow mt-3"> -->
+            <!-- EVent handling using template referencing variable -->
+
+
+
 
             <div class="d-grid gap-2">
+                <!-- <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="login(acno,pswd)">Login -->
+                <!-- event binding -->
+
                 <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="login()">Login
-                                                                                            <!-- event binding -->
+                    <!-- 2 way binding -->
                 </button>
             </div>
 
             <div class="mt-4">
-                <a href="#" class="ms-5" style="text-decoration: none;">forgot password ? </a> or <a
-                    href="./signup.html" style="text-decoration: none;">Sign up</a>
+                <a href="#" class="ms-5" style="text-decoration: none;">forgot password ? </a> or <a routerLink="register"
+                    style="text-decoration: none;">Sign up</a>
 
             </div>
         </form>
     </div>
     <div class="col-4"></div>
 </div>
+
+
