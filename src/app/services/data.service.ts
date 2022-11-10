@@ -20,7 +20,20 @@ export class DataService {
 
   constructor() { }
 
-  
+  //saveDetails() = to store data  in the local storage
+
+  saveDetails(){
+    if(this.userDetails){
+      localStorage.setItem('dataBase',JSON.stringify(this.userDetails));
+    }
+    if(this.currentAcno){
+      localStorage.setItem('currentAcno',JSON.stringify(this.currentAcno));
+    }
+    
+    if(this.currentuser){
+      localStorage.setItem('currentuser',JSON.stringify(this.currentuser));
+    }
+  }
 
  
 
@@ -40,6 +53,8 @@ export class DataService {
 
       }
       console.log(userDetails);
+        
+      this.saveDetails();   //function call
 
       return true; // then actual code will give to register function
     }
@@ -53,6 +68,8 @@ export class DataService {
       if (password == userDetails[acno]['password']) {
         this.currentuser = this.userDetails[acno]['username']; //login name display
         this.currentAcno=acno;
+      this.saveDetails();
+
         return true;
       }
       else {
@@ -81,6 +98,8 @@ export class DataService {
           amount
         })
         console.log(userDetails);
+      this.saveDetails();
+
 
         return userDetails[acno]['balance'];
 
@@ -118,6 +137,8 @@ export class DataService {
             amount
           })
           console.log(userDetails);
+        this.saveDetails();
+
 
           return userDetails[acno]['balance'];
 
