@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
@@ -20,8 +21,15 @@ export class LoginComponent implements OnInit {     //3rd execution
   pswd = '';
 
 
-  constructor(private router:Router , private ds:DataService) { }   //1st execution
-    //dependency injection
+ loginForm = this.fb.group({
+   acno: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+    pswd: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
+
+  })
+
+
+  constructor(private fb:FormBuilder, private router: Router, private ds: DataService) { }   //1st execution
+  //dependency injection
 
 
   ngOnInit(): void {      //life cycle hooks - initial process //2nd execution
@@ -93,13 +101,13 @@ export class LoginComponent implements OnInit {     //3rd execution
 
 
 
-  
+
   // login(a: any, p: any) {
   //   //..... EVent handling using template referencing variable.....
 
   //   var acno = a.value;
   //   var pswd = p.value;
-  
+
 
   //   var userDetails = this.userDetails;
 
@@ -124,35 +132,25 @@ export class LoginComponent implements OnInit {     //3rd execution
   login() {
 
 
-    var acno = this.acno;   
-     var pswd = this.pswd;   
-    const result=this.ds.login(acno,pswd);
-    if(result){
-      alert('login successfull');
-      this.router.navigateByUrl('dashboard');
+    // var acno = this.acno;
+    // var pswd = this.pswd;
+
+
+
+    if (this.loginForm.valid) {          //validation  for submit button
+      var acno = this.loginForm.value.acno;
+      var pswd = this.loginForm.value.pswd;
+
+      const result = this.ds.login(acno, pswd);
+      if (result) {
+        alert('login successfull');
+        this.router.navigateByUrl('dashboard');
+      }
     }
+    else {
+      alert('input valid data')
+      console.log(this.loginForm.get('acno')?.errors);
 
+    }
   }
-       
-
-   
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

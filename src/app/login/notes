@@ -57,7 +57,7 @@ To manipulate DOM elements
 
         b)structural directives         = to change the structure of page likes as table
                 1)ngFor  
-
+                2)ngIf  -       for validation
 
 
 Angular forms
@@ -73,6 +73,12 @@ Angular forms
                                  -> import reactive form modules
 
 
+
+
+local storage
+        -setItem
+        -getItem
+        -removeItem
 
 
 

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4 reg rounded mt-3">
-        <form action="" class="log mt-3 mb-3 border border-light shadow-lg rounded  p-5 ">
+        <form action=""  [formGroup]="loginForm"     class="log mt-3 mb-3 border border-light shadow-lg rounded  p-5 ">
             <div class="text-center">
                 <img src="../../assets/images/bank.jpeg" class="img w-25 h-25 rounded">
             </div>
@@ -24,19 +24,45 @@
             <!-- EVent handling using template referencing variable -->
 
 
-            <div class="rounded-pill shadow ps-1 pe-1   reg">
+            <!-- <div class="rounded-pill shadow ps-1 pe-1   reg">
 
-            <input [(ngModel)]="acno" [ngModelOptions]="{standalone: true}" type="text" name="acno" id="login_acno" placeholder="enter your acno"
+            <input [(ngModel)]="acno" type="text" name="acno" id="login_acno" placeholder="enter your acno"
                 class="form-control rounded-pill shadow mt-4">
-                </div>
+                </div> -->
 
-            <div class="rounded-pill shadow ps-1 pe-1   reg">
+                <div class="rounded-pill shadow ps-1 pe-1   reg">
 
-            <input [(ngModel)]="pswd" [ngModelOptions]="{standalone: true}" type="password" name="pswd" id="login_pswd" placeholder="password"
+                    <input  formControlName="acno" type="text" name="acno" id="login_acno" placeholder="enter your acno"
+                        class="form-control rounded-pill shadow mt-4">
+                        </div>
+
+
+            <div style="color:red"  *ngIf="this.loginForm.get('acno')?.touched&&this.loginForm.get('acno')?.errors">invalid acno</div>
+
+
+                            <!-- 2 way binding -->
+            <!-- <div class="rounded-pill shadow ps-1 pe-1   reg">
+
+            <input [(ngModel)]="pswd" type="password" name="pswd" id="login_pswd" placeholder="password"
                 class="form-control rounded-pill shadow mt-3"  >
-            <!-- 2 way binding -->
+            
+             </div>
+         -->
 
-                </div>
+
+
+         <div class="rounded-pill shadow ps-1 pe-1   reg">
+
+            <input  formControlName="pswd" type="password" name="pswd" id="login_pswd" placeholder="password"
+                class="form-control rounded-pill shadow mt-3"  >
+            
+             </div>
+
+
+            <div style="color:red"  *ngIf="this.loginForm.get('pswd')?.touched&&this.loginForm.get('pswd')?.errors">invalid pswd</div>
+        
+
+            
 
             <!-- <input   (change)="pswdChange($event)" type="password" id="login_pswd" placeholder="password" class="form-control rounded-pill shadow mt-3"> -->
 

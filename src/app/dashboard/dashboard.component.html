@@ -7,7 +7,7 @@
     <div class="col-1"></div>
 <div class="col-4  mt-3 mb-3">
     
-    <form action="" class=" dash mt-5 border border-light border-5 shadow-lg rounded  p-5 wrapper ">
+    <form action=""   [formGroup]="depositForm"      class=" dash mt-5 border border-light border-5 shadow-lg rounded  p-5 wrapper ">
 
         <div class="text-center">
             <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
@@ -15,22 +15,38 @@
         <div class="text-center fw-bold mt-3 ">Deposit</div>
 
 
+        <div>
+        <input formControlName="acno" name="acno" type="text" id="dash_acno" placeholder="Account Number"
+            class="form-control rounded-pill shadow mt-3">
+            </div>
+            <div style="color:red"  *ngIf="this.depositForm.get('acno')?.touched&&this.depositForm.get('acno')?.errors">invalid acno</div>
 
-        <input [(ngModel)]="acno" name="acno" type="text" id="dash_acno" placeholder="Account Number"
+
+
+
+            <div>
+        <input formControlName="pswd"  name="pswd" type="password" id="dash_pswd" placeholder="password"
             class="form-control rounded-pill shadow mt-3">
-        <input [(ngModel)]="pswd" name="pswd" type="password" id="dash_pswd" placeholder="password"
-            class="form-control rounded-pill shadow mt-3">
-        <input [(ngModel)]="amount" name="amount" type="text" id="dash_amount" placeholder="Amount for Deposit"
+            </div>
+            <div style="color:red"  *ngIf="this.depositForm.get('pswd')?.touched&&this.depositForm.get('pswd')?.errors">invalid password</div>
+
+
+
+
+            <div>
+        <input formControlName="amount"  name="amount" type="text" id="dash_amount" placeholder="Amount for Deposit"
             class="form-control rounded-pill shadow mt-4">
+            </div>
+            <div style="color:red"  *ngIf="this.depositForm.get('amount')?.touched&&this.depositForm.get('amount')?.errors">invalid amount</div>
+
+
+
 
         <div class="d-grid gap-2">
             <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="deposit()">Deposit
             </button>
         </div>
-        <!--         
-                      <div class="d-grid gap-2 text-center mt-3">
-                        <a routerLink="" style="text-decoration: none;" >Sign in</a>
-                          </div> -->
+        
     </form>
 </div>
 
@@ -38,20 +54,36 @@
 <div class="col-2"></div>
 
     <div class="col-4  mt-3 mb-3 ">
-        <form action="" class=" dash mt-5 border border-light border-5 shadow-lg rounded p-5 wrapper">
+        <form action=""  [formGroup]="withdrawForm"  class=" dash mt-5 border border-light border-5 shadow-lg rounded p-5 wrapper">
             <div class="text-center">
                 <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
             </div>
             <div class="text-center fw-bold mt-3 ">Withdraw</div>
 
 
+            <div>
+            <input formControlName="acno1" name="acno"  type="text" id="with_acno" placeholder="Account Number"
+                class="form-control rounded-pill shadow mt-3">
+                </div>
+            <div style="color:red"  *ngIf="this.withdrawForm.get('acno1')?.touched&&this.withdrawForm.get('acno1')?.errors">invalid acno</div>
 
-            <input [(ngModel)]="acno1" name="acno"  type="text" id="with_acno" placeholder="Account Number"
+
+
+
+                <div>
+            <input formControlName="pswd1" name="pswd" type="password" id="with_pswd" placeholder="password"
                 class="form-control rounded-pill shadow mt-3">
-            <input [(ngModel)]="pswd1" name="pswd" type="password" id="with_pswd" placeholder="password"
-                class="form-control rounded-pill shadow mt-3">
-            <input [(ngModel)]="amount1" name="amount" type="text" id="with_amount" placeholder="amount to withdraw"
+                </div>
+            <div style="color:red"  *ngIf="this.withdrawForm.get('pswd1')?.touched&&this.withdrawForm.get('pswd1')?.errors">invalid password</div>
+
+            
+                <div>
+            <input formControlName="amount1" name="amount" type="text" id="with_amount" placeholder="amount to withdraw"
                 class="form-control rounded-pill shadow mt-4">
+                </div>
+
+            <div style="color:red"  *ngIf="this.withdrawForm.get('amount1')?.touched&&this.withdrawForm.get('amount1')?.errors">invalid amount</div>
+
 
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="withdraw()">withdraw

@@ -27,18 +27,31 @@
 
 
             <div class="rounded-pill shadow ps-1 pe-1   reg">
-                <input formControlName="uname" name="uname" type="text" id="reg_uname" placeholder="Username"
+                <input   formControlName="uname"  name="uname" type="text" id="reg_uname" placeholder="Username"
                     class="form-control rounded-pill shadow mt-4">
             </div>
+
+            <div style="color:red"  *ngIf="this.registerForm.get('uname')?.touched&&this.registerForm.get('uname')?.errors">invalid user</div>
+
+
+
             <div class="rounded-pill shadow ps-1 pe-1 reg">
                 <input formControlName="acno" name="acno" type="text" id="reg_acno" placeholder="Account Number"
                     class="form-control rounded-pill shadow mt-3">
             </div>
+
+            <div style="color:red"  *ngIf="this.registerForm.get('acno')?.touched&&this.registerForm.get('acno')?.errors">invalid acno</div>
+            <!-- <div style="color: red;">invalid acno</div> -->
+
+
             <div class="rounded-pill shadow ps-1 pe-1 reg">
                 <input formControlName="pswd" name="pswd" type="password" id="reg_pswd" placeholder="password"
                     class="form-control rounded-pill shadow mt-3">
             </div>
 
+            <div style="color:red"  *ngIf="this.registerForm.get('pswd')?.touched&&this.registerForm.get('pswd')?.errors">invalid password</div>
+
+            
 
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="register()">Register
@@ -52,3 +65,6 @@
     </div>
     <div class="col-4"></div>
 </div>
+
+
+
