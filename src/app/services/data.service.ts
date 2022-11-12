@@ -18,7 +18,11 @@ export class DataService {
 
 
 
-  constructor() { }
+  constructor() { 
+    this.getDetails();
+  }
+
+
 
   //saveDetails() = to store data  in the local storage
 
@@ -35,6 +39,30 @@ export class DataService {
     }
   }
 
+
+
+  //getDetails() = to get data from local storage
+
+  getDetails(){
+    if(localStorage.getItem('dataBase')){
+      this.userDetails=JSON.parse(localStorage.getItem('dataBase' )|| '');
+    }
+
+  }
+
+  getcurrentUser(){
+    if(localStorage.getItem('currentuser')){
+      this.userDetails=JSON.parse(localStorage.getItem('currentuser') || '');
+    }
+
+  }
+
+  getcurrentAcno(){
+    if(localStorage.getItem('currentAcno')){
+      this.userDetails=JSON.parse(localStorage.getItem('currentAcno') || '');
+    }
+
+  }
  
 
   //function to register an user
@@ -161,6 +189,8 @@ export class DataService {
     return this.userDetails[acno]['transaction']
     
   }
+
+  
 
 }
 

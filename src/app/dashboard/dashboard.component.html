@@ -1,60 +1,84 @@
-<h2 class="text-center"> Welcome  {{user}}</h2>       <!-- login name display  using string interpolation  -->
-<div class="text-center fw-bold fs-5 mt-2">
-<a routerLink="/transaction">View Transaction Details</a>
-</div>
-
-<div class="row">
-    <div class="col-1"></div>
-<div class="col-4  mt-3 mb-3">
+<div class="mt-2 text-end">
+    <input type="button" class="btn btn-success rounded me-2  text-light" value="logout"
+        (click)="logout()">
     
-    <form action=""   [formGroup]="depositForm"      class=" dash mt-5 border border-light border-5 shadow-lg rounded  p-5 wrapper ">
-
-        <div class="text-center">
-            <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
-        </div>
-        <div class="text-center fw-bold mt-3 ">Deposit</div>
 
 
-        <div>
-        <input formControlName="acno" name="acno" type="text" id="dash_acno" placeholder="Account Number"
-            class="form-control rounded-pill shadow mt-3">
-            </div>
-            <div style="color:red"  *ngIf="this.depositForm.get('acno')?.touched&&this.depositForm.get('acno')?.errors">invalid acno</div>
-
-
-
-
-            <div>
-        <input formControlName="pswd"  name="pswd" type="password" id="dash_pswd" placeholder="password"
-            class="form-control rounded-pill shadow mt-3">
-            </div>
-            <div style="color:red"  *ngIf="this.depositForm.get('pswd')?.touched&&this.depositForm.get('pswd')?.errors">invalid password</div>
-
-
-
-
-            <div>
-        <input formControlName="amount"  name="amount" type="text" id="dash_amount" placeholder="Amount for Deposit"
-            class="form-control rounded-pill shadow mt-4">
-            </div>
-            <div style="color:red"  *ngIf="this.depositForm.get('amount')?.touched&&this.depositForm.get('amount')?.errors">invalid amount</div>
-
-
-
-
-        <div class="d-grid gap-2">
-            <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="deposit()">Deposit
-            </button>
-        </div>
-        
-    </form>
+    <input type="button" class="btn btn-danger rounded me-2  text-light" value="Delete"
+        (click)="delete()">
+    
 </div>
 
 
-<div class="col-2"></div>
+
+
+<div>
+    <h2 class="text-center"> Welcome {{user}}</h2> <!-- login name display  using string interpolation  -->
+</div>
+<div class="text-center fw-bold fs-5 mt-2">
+    <a routerLink="/transaction">View Transaction Details</a>
+</div>
+
+<app-delete [item]="acno" (click)="onCancel()"></app-delete>
+
+<div class="row " [ngClass]="acno? 'style1':''">
+    <div class="col-1"></div>
+    <div class="col-4  mt-3 mb-3">
+
+        <form action="" [formGroup]="depositForm"
+            class=" dash mt-5 border border-light border-5 shadow-lg rounded  p-5 wrapper ">
+
+            <div class="text-center">
+                <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
+            </div>
+            <div class="text-center fw-bold mt-3 ">Deposit</div>
+
+
+            <div>
+                <input formControlName="acno" name="acno" type="text" id="dash_acno" placeholder="Account Number"
+                    class="form-control rounded-pill shadow mt-3">
+            </div>
+            <div style="color:red" *ngIf="this.depositForm.get('acno')?.touched&&this.depositForm.get('acno')?.errors">
+                invalid acno</div>
+
+
+
+
+            <div>
+                <input formControlName="pswd" name="pswd" type="password" id="dash_pswd" placeholder="password"
+                    class="form-control rounded-pill shadow mt-3">
+            </div>
+            <div style="color:red" *ngIf="this.depositForm.get('pswd')?.touched&&this.depositForm.get('pswd')?.errors">
+                invalid password</div>
+
+
+
+
+            <div>
+                <input formControlName="amount" name="amount" type="text" id="dash_amount"
+                    placeholder="Amount for Deposit" class="form-control rounded-pill shadow mt-4">
+            </div>
+            <div style="color:red"
+                *ngIf="this.depositForm.get('amount')?.touched&&this.depositForm.get('amount')?.errors">invalid amount
+            </div>
+
+
+
+
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="deposit()">Deposit
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+
+    <div class="col-2"></div>
 
     <div class="col-4  mt-3 mb-3 ">
-        <form action=""  [formGroup]="withdrawForm"  class=" dash mt-5 border border-light border-5 shadow-lg rounded p-5 wrapper">
+        <form action="" [formGroup]="withdrawForm"
+            class=" dash mt-5 border border-light border-5 shadow-lg rounded p-5 wrapper">
             <div class="text-center">
                 <img src="../../assets/images/bank.jpeg " class="w-25 h-25 rounded">
             </div>
@@ -62,38 +86,41 @@
 
 
             <div>
-            <input formControlName="acno1" name="acno"  type="text" id="with_acno" placeholder="Account Number"
-                class="form-control rounded-pill shadow mt-3">
-                </div>
-            <div style="color:red"  *ngIf="this.withdrawForm.get('acno1')?.touched&&this.withdrawForm.get('acno1')?.errors">invalid acno</div>
+                <input formControlName="acno1" name="acno" type="text" id="with_acno" placeholder="Account Number"
+                    class="form-control rounded-pill shadow mt-3">
+            </div>
+            <div style="color:red"
+                *ngIf="this.withdrawForm.get('acno1')?.touched&&this.withdrawForm.get('acno1')?.errors">invalid acno
+            </div>
 
 
 
 
-                <div>
-            <input formControlName="pswd1" name="pswd" type="password" id="with_pswd" placeholder="password"
-                class="form-control rounded-pill shadow mt-3">
-                </div>
-            <div style="color:red"  *ngIf="this.withdrawForm.get('pswd1')?.touched&&this.withdrawForm.get('pswd1')?.errors">invalid password</div>
+            <div>
+                <input formControlName="pswd1" name="pswd" type="password" id="with_pswd" placeholder="password"
+                    class="form-control rounded-pill shadow mt-3">
+            </div>
+            <div style="color:red"
+                *ngIf="this.withdrawForm.get('pswd1')?.touched&&this.withdrawForm.get('pswd1')?.errors">invalid password
+            </div>
 
-            
-                <div>
-            <input formControlName="amount1" name="amount" type="text" id="with_amount" placeholder="amount to withdraw"
-                class="form-control rounded-pill shadow mt-4">
-                </div>
 
-            <div style="color:red"  *ngIf="this.withdrawForm.get('amount1')?.touched&&this.withdrawForm.get('amount1')?.errors">invalid amount</div>
+            <div>
+                <input formControlName="amount1" name="amount" type="text" id="with_amount"
+                    placeholder="amount to withdraw" class="form-control rounded-pill shadow mt-4">
+            </div>
+
+            <div style="color:red"
+                *ngIf="this.withdrawForm.get('amount1')?.touched&&this.withdrawForm.get('amount1')?.errors">invalid
+                amount</div>
 
 
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary rounded-pill mt-5 text-light" (click)="withdraw()">withdraw
                 </button>
             </div>
-           
+
         </form>
     </div>
-<div class="col-1"></div>
+    <div class="col-1"></div>
 </div>
-
-
-

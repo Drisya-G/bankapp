@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -40,13 +41,20 @@ export class DashboardComponent implements OnInit {
 
 
   })
+  acno: any;
+  //router: any;
 
 
-  constructor(private fb: FormBuilder, private ds: DataService) {
+  constructor(private fb: FormBuilder, private ds: DataService, private router:Router) {
     this.user = this.ds.currentuser;      //login name display
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {                      //after logout .. the code cant be go back 
+    if(!localStorage.getItem('currentAcno')){
+      alert("please login first ");
+      this.router.navigateByUrl('');
+
+    }
   }
 
   deposit() {
@@ -103,6 +111,23 @@ export class DashboardComponent implements OnInit {
     console.log(this.depositForm.get('acno')?.errors);
 
   }
+}
+
+logout(){
+  //remove uname
+localStorage.removeItem('currentuser');
+localStorage.removeItem('currentAcno');
+
+  //navigate to login page
+  this.router.navigateByUrl('');
+
+}
+delete(){
+  this.acno=JSON.parse(localStorage.getItem('currentAcno')||'');
+
+}
+onCancel(){
+  this.acno="";
 }
 }
 
